@@ -33,6 +33,10 @@ pipeline {
                 echo "hell"
             }
         }
-        //stage('')
+        stage('docker login') {
+            steps {
+                sh 'echo ${DOCKER_AUTH_TOKEN} | docker login -u ${DOCKER_USER_NAME} --password-stdin'
+            }
+        }
     }
 }
