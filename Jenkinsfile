@@ -5,7 +5,24 @@ pipeline {
     stages {
         stage('scm') {
             steps {
-                echo "dummy stage"
+                echo "taken care by jenkins"
+            }
+        }
+        stage('prepare env') {
+            steps {
+                sh 'pip3 install --break-system-packages -r requirements.txt'
+            }
+            
+        }
+        stage('test the app') {
+            steps {
+                sh 'pytest test_app.py'
+            }
+        }
+
+        stage('prepare the image') {
+            steps {
+                echo "hell"
             }
         }
     }
