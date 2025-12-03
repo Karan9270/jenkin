@@ -38,14 +38,17 @@ pipeline {
                 sh 'echo ${DOCKER_AUTH_TOKEN} | docker login -u ${DOCKER_USER_NAME} --password-stdin'
             }
         }
+        // push the docker image to docker hub
         stage('push docker image') {
-            steps{
-            sh 'docker image push ${DOCKER_IMAGE_PUSH}'
+            steps {
+                sh 'docker image push ${DOCKER_IMAGE_NAME}'
             }
         }
+
+        // restart the service
         stage('restart service') {
-            steps{
-                sh 'docker service update --force --image ${DOCKER_IMAGE_NAME} python-app'
+            steps {
+                sh 'docker service update --force --image ${DOCKER_IMAGE_NAME} python-app' 
             }
         }
     }
