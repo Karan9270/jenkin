@@ -6,7 +6,7 @@ pipeline {
 
         DOCKER_USER_NAME="karan9270"
 
-        DOCKER_AUTH_TOKEN="credentials('DOCKER_AUTH_TOKEN')"
+        DOCKER_AUTH_TOKEN=credentials('DOCKER_AUTH_TOKEN')
 
     }
     stages {
