@@ -1,7 +1,14 @@
 pipeline {
     agent any
 
-    //environment{}
+    environment{
+        DOCKER_IMAGE_NAME="karan9270/python-test-app"
+
+        DOCKER_USER_NAME="karan9270"
+
+        DOCKER_AUTH_TOKEN="credentials('DOCKER_AUTH_TOKEN')"
+
+    }
     stages {
         stage('scm') {
             steps {
@@ -20,10 +27,12 @@ pipeline {
             }
         }
 
-        stage('prepare the image') {
+        stage('prepare the docker image') {
             steps {
+                //sh 'docker image build -t $DOCKER_IMAGE_NAME'
                 echo "hell"
             }
         }
+        stage('')
     }
 }
