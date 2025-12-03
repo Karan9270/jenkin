@@ -29,7 +29,7 @@ pipeline {
 
         stage('prepare the docker image') {
             steps {
-                //sh 'docker image build -t $DOCKER_IMAGE_NAME'
+                sh 'docker image build -t ${DOCKER_IMAGE_NAME} .'
                 echo "hell"
             }
         }
